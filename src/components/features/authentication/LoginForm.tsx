@@ -19,7 +19,7 @@ import { cn } from "@blyp/lib/utils";
 import { z } from "zod";
 import Link from "next/link";
 import Image from "next/image";
-import { CustomToast } from "@blyp/components/ui/CustomToast";
+import { ErrorToast } from "@blyp/components/ui/ErrorToast";
 
 export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ className, ...props }) => {
   const [isPending, setIsPending] = useState(false);
@@ -47,16 +47,12 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
         loginForm.resetField("password");
         loginForm.setFocus("password");
 
-        if (ctx.error.status === 403) {
-          toast.error("Please verify your email address.");
-        } else {
-          toast.custom(() => (
-            <CustomToast
-              title={ctx.error.message}
-              description="  Make sure you have the correct credentials, or that your account has already been verified."
-            />
-          ));
-        }
+        toast.custom(() => (
+          <ErrorToast
+            title={ctx.error.message}
+            description="  Make sure you have the correct credentials, or that your account has already been verified."
+          />
+        ));
       },
     });
   };
@@ -65,8 +61,8 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
     await authClient.signIn.social({
       provider: provider,
       scopes: ["openid", "profile", "email"],
-      callbackURL: "/feed",
-      newUserCallbackURL: "/on-boarding",
+      callbackURL: "/",
+      newUserCallbackURL: "/welcome",
     });
   };
 
@@ -77,7 +73,7 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
           <CardTitle className="flex items-center justify-center gap-1">
             <Image src="/blyp_logo.svg" alt="logo" height={40} width={40} />
           </CardTitle>
-          <CardDescription>Login with your Google or Github account</CardDescription>
+          <CardDescription>Welcome to Blyp!</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...loginForm}>
@@ -90,7 +86,7 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
                   onClick={() => handleSocialSignIn("google")}
                 >
                   <GoogleLogo />
-                  Login with Google
+                  Continue with Google
                 </Button>
 
                 <Button
@@ -100,7 +96,7 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
                   onClick={() => handleSocialSignIn("github")}
                 >
                   <GithubLogo className="dark:invert" />
-                  Login with Github
+                  Continue with Github
                 </Button>
               </div>
 
@@ -155,7 +151,7 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
 
               <div className="text-center text-sm">
                 Don&apos;t have an account yet?{" "}
-                <Link href="/auth/signup" className="underline underline-offset-4">
+                <Link href="/auth/register" className="underline underline-offset-4">
                   Sign up
                 </Link>
               </div>
@@ -163,8 +159,8 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
           </Form>
         </CardContent>
       </Card>
-      <footer className="text-muted-foreground [&_a]:hover:text-primary text-center text-xs tracking-wider text-balance">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a> and{" "}
+      <footer className="text-muted-foreground [&_a]:hover:text-primary text-center text-xs tracking-wide text-balance">
+        By logging in or signing up, you agree to our <a href="#">Terms of Service</a> and{" "}
         <a href="#">Privacy Policy</a>.
       </footer>
     </div>

@@ -10,7 +10,7 @@ export const LoginSchema = z.object({
 
 export const SignUpSchema = z.object({
   name: z.string().min(5, { message: "Name field must be at least 5 characters." }),
-  username: z.string(),
+  username: z.string().optional(),
   email: z
     .string()
     .email({ message: "Please enter a valid email." })
