@@ -29,12 +29,14 @@ CREATE TABLE "sessions" (
 CREATE TABLE "users" (
 	"id" text PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
-	"username" text NOT NULL,
+	"username" text,
+	"display_username" text,
 	"email" text NOT NULL,
 	"email_verified" boolean NOT NULL,
 	"image" text,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL,
+	CONSTRAINT "users_username_unique" UNIQUE("username"),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
