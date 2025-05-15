@@ -8,8 +8,8 @@ export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
       className={cn(
         "absolute inset-0",
         "[background-size:20px_20px]",
-        "[background-image:radial-gradient(rgba(212,212,212,0.3)_1px,transparent_1px)]",
-        "dark:[background-image:radial-gradient(rgba(64,64,64,0.2)_1px,transparent_1px)]",
+        "[background-image:radial-gradient(rgba(212,212,212,0.6)_1px,transparent_1px)]",
+        "dark:[background-image:radial-gradient(rgba(64,64,64,0.25)_1px,transparent_1px)]",
       )}
     >
       <div className="dark:bg-background pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
