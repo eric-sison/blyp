@@ -62,7 +62,6 @@ export const LoginForm: FunctionComponent<ComponentPropsWithoutRef<"div">> = ({ 
       provider: provider,
       scopes: ["openid", "profile", "email"],
       callbackURL: "/",
-      newUserCallbackURL: "/welcome",
     });
   };
 

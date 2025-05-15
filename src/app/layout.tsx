@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@blyp/components/providers/ThemeProvider";
 import { Toaster } from "@blyp/components/ui/Sonner";
 import "./globals.css";
+import { TooltipProvider } from "@blyp/components/ui/Tooltip";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,11 +22,13 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
         {/* prettier-ignore */}
         <ThemeProvider 
             attribute="class" 
-            defaultTheme="system" 
+            defaultTheme="dark" 
             enableSystem 
             disableTransitionOnChange
         >
-          <main className="h-screen w-screen overflow-x-hidden">{children}</main>
+          <TooltipProvider>
+            <main className="h-screen w-screen overflow-x-hidden">{children}</main>
+          </TooltipProvider>
           <Toaster position="top-right" />
         </ThemeProvider>
       </body>

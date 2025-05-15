@@ -113,7 +113,7 @@ export const SignupForm: FunctionComponent<ComponentProps<"div">> = ({ className
                     <FormItem className="grid gap-2">
                       <FormLabel htmlFor="username">Username</FormLabel>
                       <FormControl>
-                        <Input id="username" placeholder="@johndoe" {...field} />
+                        <Input id="username" placeholder="johndoe" {...field} />
                       </FormControl>
 
                       {formState.errors.username ? (

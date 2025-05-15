@@ -15,7 +15,7 @@ export default function AuthLayout({ children }: Readonly<PropsWithChildren>) {
       <div className="dark:bg-background pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       <div className="relative z-20 h-full">
         <div className="absolute top-5 left-5 z-20">
-          <ThemeToggler />
+          <ThemeToggler align="start" />
         </div>
         {children}
       </div>

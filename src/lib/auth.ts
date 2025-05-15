@@ -70,7 +70,7 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }) => {
       const callbackUrl = new URL(url);
-      callbackUrl.searchParams.set("callbackURL", "/welcome");
+      callbackUrl.searchParams.set("callbackURL", "/");
 
       await resend.emails.send({
         from: `Blyp Support <${env.RESEND_SENDER_MAIL}>`,
