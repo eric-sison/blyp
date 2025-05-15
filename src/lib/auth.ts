@@ -1,6 +1,6 @@
 import db from "@blyp/server/db/connection";
 import { betterAuth } from "better-auth";
-import { openAPI } from "better-auth/plugins";
+import { openAPI, username } from "better-auth/plugins";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { accounts, sessions, users, verifications } from "@blyp/server/db/schemas/auth";
 import { resend } from "./resend";
@@ -18,16 +18,6 @@ export const auth = betterAuth({
     },
   }),
 
-  user: {
-    additionalFields: {
-      username: {
-        type: "string",
-        required: true,
-        input: true,
-      },
-    },
-  },
-
   trustedOrigins: [env.BETTER_AUTH_URL],
 
   socialProviders: {
@@ -41,7 +31,7 @@ export const auth = betterAuth({
     },
   },
 
-  plugins: [openAPI()],
+  plugins: [openAPI(), username()],
 
   advanced: {
     database: {
@@ -80,10 +70,10 @@ export const auth = betterAuth({
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url }) => {
       const callbackUrl = new URL(url);
-      callbackUrl.searchParams.set("callbackURL", "/on-boarding");
+      callbackUrl.searchParams.set("callbackURL", "/welcome");
 
       await resend.emails.send({
-        from: `blyp Support <${env.RESEND_SENDER_MAIL}>`,
+        from: `Blyp Support <${env.RESEND_SENDER_MAIL}>`,
         to: user.email,
         subject: "Account Verification",
         html: `<p>Click this <a href=${callbackUrl}>link</a> to verify your email.</p>`,
