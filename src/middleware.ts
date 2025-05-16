@@ -8,11 +8,15 @@ const publicRoutes = [
   "/auth/forgot-password",
   "/auth/reset-password",
   "/auth/email-sent",
+  /^\/blogs(\/.*)?$/,
 ];
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const isPublicRoute = publicRoutes.includes(pathname);
+
+  const isPublicRoute = publicRoutes.some((route) =>
+    typeof route === "string" ? route === pathname : route.test(pathname),
+  );
 
   const res = await fetch(`${process.env.BETTER_AUTH_URL}/api/auth/get-session`, {
     method: "GET",

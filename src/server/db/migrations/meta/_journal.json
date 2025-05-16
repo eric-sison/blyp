@@ -8,6 +8,20 @@
       "when": 1747295539717,
       "tag": "0000_heavy_zeigeist",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1747375779650,
+      "tag": "0001_colorful_wallow",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1747378000739,
+      "tag": "0002_quiet_colonel_america",
+      "breakpoints": true
     }
   ]
 }

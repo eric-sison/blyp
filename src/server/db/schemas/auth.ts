@@ -1,5 +1,6 @@
 import { generateCuid } from "@blyp/lib/cuid";
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import { createSelectSchema } from "drizzle-zod";
 
 export const users = pgTable("users", {
   id: text("id")
@@ -60,3 +61,5 @@ export const verifications = pgTable("verifications", {
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
+
+export const SelectUsersSchema = createSelectSchema(users);

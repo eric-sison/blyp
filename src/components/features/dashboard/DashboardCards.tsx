@@ -19,9 +19,9 @@ export const DashboardCards: FunctionComponent = () => {
             <NewBlogCard />
           </div>
 
-          <div className="col-span-1">
+          {/* <div className="col-span-1">
             <FollowCard />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

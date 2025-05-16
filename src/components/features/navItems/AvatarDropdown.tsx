@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@blyp/components/ui/DropdownMenu";
 import { authClient } from "@blyp/lib/auth-client";
-import { Album, History, LogOut, UserCog } from "lucide-react";
+import { Album, LogOut, UserCog } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type FunctionComponent } from "react";
 
@@ -50,10 +50,6 @@ export const AvatarDropdown: FunctionComponent<AvatarDropdownProps> = ({ image, 
         <DropdownMenuItem>
           <Album />
           Bookmarks
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <History />
-          Reading history
         </DropdownMenuItem>
         <DropdownMenuItem>
           <UserCog />

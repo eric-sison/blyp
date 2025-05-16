@@ -17,6 +17,7 @@ export default async function ProtectedLayout({ children }: Readonly<PropsWithCh
         "[background-size:20px_20px]",
         "[background-image:radial-gradient(rgba(212,212,212,0.4)_1px,transparent_1px)]",
         "dark:[background-image:radial-gradient(rgba(64,64,64,0.12)_1px,transparent_1px)]",
+        "overflow-x-hidden",
       )}
     >
       <div className="dark:bg-background pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
@@ -27,120 +28,120 @@ export default async function ProtectedLayout({ children }: Readonly<PropsWithCh
           <h2>Blyp</h2>
         </Link> */}
 
-          <section className="flex items-center gap-2">
+          <section className="flex items-center gap-4">
             <ThemeToggler align="end" />
-            <AvatarDropdown email={data?.user.email!} name={data?.user.name!} image={data?.user.image!} />
+            <AvatarDropdown email={data!.user.email!} name={data!.user.name!} image={data!.user.image!} />
           </section>
         </nav>
 
-        <main className="h-full pt-20">{children}</main>
+        <main className="h-full pt-10">{children}</main>
 
-        {/* <footer className="absolute w-full">
-        <div className="dark:bg-secondary/20 bg-secondary/40 flex h-40 flex-col justify-between border-t px-40 py-8">
-          <section className="flex items-center justify-between">
-            <ul className="flex items-center gap-7">
-              <li>
-                <Image src="/blyp_logo.svg" alt="logo" height={25} width={25} className="grayscale" />
-              </li>
+        {/* <footer className="mt-96 w-full">
+          <div className="dark:bg-secondary/20 bg-secondary/40 flex h-40 flex-col justify-between border-t px-40 py-8">
+            <section className="flex items-center justify-between">
+              <ul className="flex items-center gap-7">
+                <li>
+                  <Image src="/blyp_logo.svg" alt="logo" height={25} width={25} className="grayscale" />
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="/">Home</Link>
-              </li>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="/">Home</Link>
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="#">Support</Link>
-              </li>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="#">Support</Link>
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="#">About</Link>
-              </li>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="#">About</Link>
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="#">Privacy Policy</Link>
-              </li>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="#">Privacy Policy</Link>
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="#">Terms</Link>
-              </li>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="#">Terms</Link>
+                </li>
 
-              <li className="text-primary/70 hover:text-primary text-sm font-medium">
-                <Link href="#">Code of Conduct</Link>
-              </li>
-            </ul>
+                <li className="text-primary/70 hover:text-primary text-sm font-medium">
+                  <Link href="#">Code of Conduct</Link>
+                </li>
+              </ul>
 
-            <ul className="flex items-center gap-5">
-              <li>
-                <Link href="#">
-                  <Image
-                    src="/social/facebook.svg"
-                    alt="logo"
-                    height={15}
-                    width={15}
-                    className="dark:invert-50"
-                  />
-                </Link>
-              </li>
-              <li>
-                <Link href="#">
-                  <Image src="/social/x.svg" alt="logo" height={15} width={15} className="dark:invert-50" />
-                </Link>
-              </li>
+              <ul className="flex items-center gap-5">
+                <li>
+                  <Link href="#">
+                    <Image
+                      src="/social/facebook.svg"
+                      alt="logo"
+                      height={15}
+                      width={15}
+                      className="dark:invert-50"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#">
+                    <Image src="/social/x.svg" alt="logo" height={15} width={15} className="dark:invert-50" />
+                  </Link>
+                </li>
 
-              <li>
-                <Link href="#">
-                  <Image
-                    src="/social/linkedin.svg"
-                    alt="logo"
-                    height={15}
-                    width={15}
-                    className="dark:invert-50"
-                  />
-                </Link>
-              </li>
+                <li>
+                  <Link href="#">
+                    <Image
+                      src="/social/linkedin.svg"
+                      alt="logo"
+                      height={15}
+                      width={15}
+                      className="dark:invert-50"
+                    />
+                  </Link>
+                </li>
 
-              <li>
-                <Link href="#">
-                  <Image
-                    src="/social/instagram.svg"
-                    alt="logo"
-                    height={15}
-                    width={15}
-                    className="dark:invert-50"
-                  />
-                </Link>
-              </li>
+                <li>
+                  <Link href="#">
+                    <Image
+                      src="/social/instagram.svg"
+                      alt="logo"
+                      height={15}
+                      width={15}
+                      className="dark:invert-50"
+                    />
+                  </Link>
+                </li>
 
-              <li>
-                <Link href="#">
-                  <Image
-                    src="/social/discord.svg"
-                    alt="logo"
-                    height={15}
-                    width={15}
-                    className="dark:invert-50"
-                  />
-                </Link>
-              </li>
+                <li>
+                  <Link href="#">
+                    <Image
+                      src="/social/discord.svg"
+                      alt="logo"
+                      height={15}
+                      width={15}
+                      className="dark:invert-50"
+                    />
+                  </Link>
+                </li>
 
-              <li>
-                <Link href="#">
-                  <Image
-                    src="/social/youtube.svg"
-                    alt="logo"
-                    height={15}
-                    width={15}
-                    className="dark:invert-50"
-                  />
-                </Link>
-              </li>
-            </ul>
-          </section>
+                <li>
+                  <Link href="#">
+                    <Image
+                      src="/social/youtube.svg"
+                      alt="logo"
+                      height={15}
+                      width={15}
+                      className="dark:invert-50"
+                    />
+                  </Link>
+                </li>
+              </ul>
+            </section>
 
-          <section className="text-primary/70 text-sm">
-            © Blyp {new Date().getFullYear()} — @ericsison.dev
-          </section>
-        </div>
-      </footer> */}
+            <section className="text-primary/70 text-sm">
+              © Blyp {new Date().getFullYear()} — @ericsison.dev
+            </section>
+          </div>
+        </footer> */}
       </div>
     </div>
   );

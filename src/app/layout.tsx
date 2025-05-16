@@ -5,6 +5,7 @@ import { ThemeProvider } from "@blyp/components/providers/ThemeProvider";
 import { Toaster } from "@blyp/components/ui/Sonner";
 import "./globals.css";
 import { TooltipProvider } from "@blyp/components/ui/Tooltip";
+import { ReactQueryProvider } from "@blyp/components/providers/ReactQueryClient";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,8 +20,9 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${inter.variable} antialiased`}>
-        {/* prettier-ignore */}
-        <ThemeProvider 
+        <ReactQueryProvider>
+          {/* prettier-ignore */}
+          <ThemeProvider 
             attribute="class" 
             defaultTheme="dark" 
             enableSystem 
@@ -31,6 +33,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
           </TooltipProvider>
           <Toaster position="top-right" />
         </ThemeProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

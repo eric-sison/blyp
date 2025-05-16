@@ -1,8 +1,10 @@
 import { Hono } from "hono";
 import { healthcheckHandler } from "./routes/healthcheck";
+import { articlesHandler } from "./routes/blogs";
 import { auth } from "@blyp/lib/auth";
 import { cors } from "hono/cors";
 import env from "@blyp/lib/env";
+import { authorsHandler } from "./routes/authors";
 
 function createApp() {
   const app = new Hono().basePath("/api");
@@ -20,7 +22,7 @@ function createApp() {
     return auth.handler(c.req.raw);
   });
 
-  const routes = [healthcheckHandler] as const;
+  const routes = [healthcheckHandler, articlesHandler, authorsHandler] as const;
 
   routes.forEach((route) => app.route("/", route));
 

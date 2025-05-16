@@ -1,14 +1,18 @@
 import { DashboardCards } from "@blyp/components/features/dashboard/DashboardCards";
 import { YourBlogs } from "@blyp/components/features/dashboard/YourBlogs";
 import { Separator } from "@blyp/components/ui/Separator";
+import { auth } from "@blyp/lib/auth";
 import { Sparkles } from "lucide-react";
 import { type Metadata } from "next";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Blyp - Dashboard",
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const data = await auth.api.getSession({ headers: await headers() });
+
   return (
     <div className="w-full space-y-14 px-80 py-4">
       <section className="space-y-5">
@@ -27,7 +31,12 @@ export default function HomePage() {
 
       <section className="space-y-14">
         <DashboardCards />
-        <YourBlogs />
+        <YourBlogs
+          id={data!.user.id!}
+          email={data!.user.email!}
+          name={data!.user.name!}
+          image={data!.user.image ?? ""}
+        />
       </section>
     </div>
   );
