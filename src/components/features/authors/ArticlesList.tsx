@@ -6,7 +6,6 @@ import axios from "axios";
 import { FunctionComponent } from "react";
 import { z } from "zod";
 import { ArticleCard } from "./ArticleCard";
-import { load } from "cheerio";
 import { SelectUsersSchema } from "@blyp/server/db/schemas/auth";
 
 type Result = {

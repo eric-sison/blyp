@@ -2,7 +2,6 @@
 
 import { FunctionComponent } from "react";
 import { NewBlogCard } from "./NewBlogCard";
-import { FollowCard } from "./FollowCard";
 import { ArticleFeedCard } from "./ArticleFeedCard";
 
 export const DashboardCards: FunctionComponent = () => {
