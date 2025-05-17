@@ -47,6 +47,7 @@ export default async function ReadArticle(props: PageProps<{ id: string }>) {
       </div>
     );
   } catch (error) {
+    console.error(error);
     redirect("/");
   }
 }

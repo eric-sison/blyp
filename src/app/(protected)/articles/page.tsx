@@ -1,6 +1,5 @@
 import { ArticlesList } from "@blyp/components/features/authors/ArticlesList";
 import { GoBack } from "@blyp/components/features/editor/GoBack";
-import { ScrollArea } from "@blyp/components/ui/ScrollArea";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@blyp/lib/utils";
-import { FileStack, Newspaper, Rss, Users } from "lucide-react";
+import { FileStack, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FunctionComponent } from "react";
 
