@@ -13,12 +13,13 @@ type HtmlRendererProps = {
 
 export const HtmlRenderer: FunctionComponent<HtmlRendererProps> = ({ content, title, image, date, name }) => {
   return (
-    <article className="prose dark:prose-invert prose-img:rounded-full prose-a:text-blue-600 dark:prose-p:text-gray-400">
+    <article className="prose dark:prose-invert prose-img:rounded-full prose-a:text-blue-600">
       <header>
         <h1 className="text-center">{title}</h1>
         <div className="flex flex-col items-center justify-center">
           {image ? (
-            <img src={image ?? undefined} className="size-12 rounded-full" />
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={image} className="size-12 rounded-full" alt="profile" />
           ) : (
             <div className="mt-10 mb-7 flex size-12 items-center justify-center rounded-full bg-indigo-500 text-2xl font-medium text-white">
               {name.charAt(0).toUpperCase()}

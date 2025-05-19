@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 export const WriteArticle: FunctionComponent = () => {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
-  const [subTitle, setSubTitle] = useState("");
+  // const [subTitle, setSubTitle] = useState("");
 
   const { data } = authClient.useSession();
   const router = useRouter();
@@ -32,7 +32,7 @@ export const WriteArticle: FunctionComponent = () => {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/articles`, {
         content,
         title,
-        subTitle,
+        // subTitle,
         authorId: data?.user.id,
       });
 
@@ -71,7 +71,7 @@ export const WriteArticle: FunctionComponent = () => {
         </div>
       </div>
 
-      <ScrollArea className="h-full max-w-4xl">
+      <ScrollArea className="h-full max-w-4xl pt-10">
         <div className="mb-2 space-y-4">
           <div>
             <input
@@ -80,12 +80,12 @@ export const WriteArticle: FunctionComponent = () => {
               placeholder="Article Title..."
               className="w-full px-2 py-2 text-4xl font-bold tracking-normal outline-0"
             />
-            <input
+            {/* <input
               value={subTitle}
               onChange={(e) => setSubTitle(e.target.value)}
               placeholder="Add Subtitle..."
               className="text-primary/70 w-full px-2 py-2 text-2xl font-semibold tracking-wide outline-0"
-            />
+            /> */}
           </div>
         </div>
 
